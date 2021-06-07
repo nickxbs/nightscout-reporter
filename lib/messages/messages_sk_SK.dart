@@ -689,6 +689,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Mehrfache Datensätze kennzeichnen" : MessageLookupByLibrary.simpleMessage("Označte viac záznamov"),
     "Menü" : MessageLookupByLibrary.simpleMessage("Menu"),
     "Mess-\nwerte" : MessageLookupByLibrary.simpleMessage("Hod-\nnoty"),
+    "Sensor Av" : MessageLookupByLibrary.simpleMessage("Sensor Av"),
     "Min" : MessageLookupByLibrary.simpleMessage("Min"),
     "Min / Max Werte anzeigen" : MessageLookupByLibrary.simpleMessage("Zobrazovať min / max hodnoty"),
     "Mit Google Drive synchronisieren" : MessageLookupByLibrary.simpleMessage("Synchronizácia s Diskom Google"),

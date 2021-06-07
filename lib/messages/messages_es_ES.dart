@@ -689,6 +689,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Mehrfache Datensätze kennzeichnen" : MessageLookupByLibrary.simpleMessage("Marcar múltiples registros"),
     "Menü" : MessageLookupByLibrary.simpleMessage("Menú"),
     "Mess-\nwerte" : MessageLookupByLibrary.simpleMessage("Valores medidos"),
+    "Sensor Av" : MessageLookupByLibrary.simpleMessage("Sensor Av"),
     "Min" : MessageLookupByLibrary.simpleMessage("Min"),
     "Min / Max Werte anzeigen" : MessageLookupByLibrary.simpleMessage("Mostrar valores min/max"),
     "Mit Google Drive synchronisieren" : MessageLookupByLibrary.simpleMessage("Sincronizar con Google Drive"),

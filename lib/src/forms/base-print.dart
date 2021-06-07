@@ -927,6 +927,8 @@ abstract class BasePrint {
 
   String get msgValues => Intl.message('Mess-\nwerte');
 
+  String get msgSensorAV => Intl.message('Sensor Av');
+
   String get msgMin => Intl.message('Min');
 
   String get msgMax => Intl.message('Max');

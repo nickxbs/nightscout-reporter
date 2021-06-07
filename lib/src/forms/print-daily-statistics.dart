@@ -74,7 +74,7 @@ schwächerer Schrift angezeigt wird.
   static String get msgParam9 => Intl.message('Bolus anzeigen');
 
   static String get msgParam10 => Intl.message('TDD anzeigen');
-  static String get msgParam11 => Intl.message('Sensor AV%');
+  static String get msgParam11 => Intl.message('Sensor Av');
 
   @override
   void checkValue(ParamInfo param, dynamic value) {
@@ -294,7 +294,7 @@ schwächerer Schrift angezeigt wird.
       'alignment': 'right'
     });
     addTableRow(showActiveSensor, 'auto', row, {
-      'text': 'Sensor Activity',
+      'text': msgSensorAV,
       'style': 'total',
       'alignment': 'center'
     }, {
