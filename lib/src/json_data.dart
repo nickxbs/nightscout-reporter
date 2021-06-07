@@ -1855,6 +1855,7 @@ class DayData {
   int stdNormCount = 0;
   int stdHighCount = 0;
   int entryCountValid = 0;
+  int totalCount = 288;
   int entryCountInvalid = 0;
   int carbCount = 0;
   double carbs = 0;
@@ -1883,6 +1884,16 @@ class DayData {
       }
     }
     return count > 0 ? ret / count : 0.0;
+  }
+
+  double get getSensorActive {
+    var count = 0;
+    for (var entry in entries) {
+      if (!entry.isGlucInvalid) {
+        count++;
+      }
+    }
+    return count > 0 ? (count / totalCount) * 100 : 0.0;
   }
 
   double get varK => (mid ?? 0) != 0 ? stdAbw(true) / mid * 100 : 0;

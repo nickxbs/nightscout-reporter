@@ -32,7 +32,8 @@ schwächerer Schrift angezeigt wird.
       useDailyBasalrate,
       showCarbs,
       showBolus,
-      showTDD;
+      showTDD,
+      showActiveSensor;
   double _maxTDD = 0.0;
   double _basalSum = 0.0;
 
@@ -51,6 +52,7 @@ schwächerer Schrift angezeigt wird.
     ParamInfo(1, msgParam8, boolValue: false),
     ParamInfo(8, msgParam9, boolValue: false),
     ParamInfo(9, msgParam10, boolValue: false),
+    ParamInfo(9, msgParam11, boolValue: false),
   ];
 
   static String get msgParam1 => Intl.message('Spalte Messwerte');
@@ -72,6 +74,7 @@ schwächerer Schrift angezeigt wird.
   static String get msgParam9 => Intl.message('Bolus anzeigen');
 
   static String get msgParam10 => Intl.message('TDD anzeigen');
+  static String get msgParam11 => Intl.message('Sensor AV%');
 
   @override
   void checkValue(ParamInfo param, dynamic value) {
@@ -106,6 +109,7 @@ schwächerer Schrift angezeigt wird.
     showValueStats = params[7].boolValue;
     showBolus = params[8].boolValue;
     showTDD = params[9].boolValue;
+    showActiveSensor = params[10].boolValue;
   }
 
   @override
@@ -289,6 +293,15 @@ schwächerer Schrift angezeigt wird.
       'style': style,
       'alignment': 'right'
     });
+    addTableRow(showActiveSensor, 'auto', row, {
+      'text': 'Sensor Activity',
+      'style': 'total',
+      'alignment': 'center'
+    }, {
+      'text': '${g.fmtNumber(day.getSensorActive, 0)} %',
+      'style': style,
+      'alignment': 'right'
+    });
     addTableRow(showValueStats, 'auto', row, {
       'text': msgMin,
       'style': 'total',
@@ -447,6 +460,7 @@ schwächerer Schrift angezeigt wird.
     totalDay.basalData.store.listBasal = [];
     totalDay.basalData.targetHigh = 0;
     totalDay.basalData.targetLow = 1000;
+    totalDay.totalCount = 0;
     var totalDays = 0;
     _maxTDD = 0.0;
     _basalSum = 0.0;
@@ -467,6 +481,7 @@ schwächerer Schrift angezeigt wird.
       if (day.entryCountValid == 0) continue;
       totalDays++;
       totalDay.entries.addAll(day.entries);
+      totalDay.totalCount += day.totalCount;
       totalDay.bloody.addAll(day.bloody);
       totalDay.treatments.addAll(day.treatments);
       totalDay.profile.addAll(day.profile);
