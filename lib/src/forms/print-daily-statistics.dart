@@ -229,7 +229,8 @@ schwächerer Schrift angezeigt wird.
       'alignment': 'center',
       'fillColor': colLow
     }, {
-      'text': '${g.fmtNumber(day.lowPrz(g), 0)} %',
+      'text':
+          '${g.fmtNumber(day.lowPrz(g), 1)} (${g.fmtNumber(day.lowerPrz(g), 1)}) %',
       'style': style,
       'alignment': 'right',
       'fillColor': style == 'total' ? colLow : null
@@ -240,7 +241,7 @@ schwächerer Schrift angezeigt wird.
       'alignment': 'center',
       'fillColor': colNorm
     }, {
-      'text': '${g.fmtNumber(day.normPrz(g), 0)} %',
+      'text': '${g.fmtNumber(day.normPrz(g), 1)} %',
       'style': style,
       'alignment': 'right',
       'fillColor': style == 'total' ? colNorm : null
@@ -251,7 +252,8 @@ schwächerer Schrift angezeigt wird.
       'alignment': 'center',
       'fillColor': colHigh
     }, {
-      'text': '${g.fmtNumber(day.highPrz(g), 0)} %',
+      'text':
+          '${g.fmtNumber(day.highPrz(g), 1)} (${g.fmtNumber(day.higherPrz(g), 1)} %)',
       'style': style,
       'alignment': 'right',
       'fillColor': style == 'total' ? colHigh : null

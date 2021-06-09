@@ -289,7 +289,9 @@ class StatusData extends JsonData {
 class ProfileGlucData {
   DateTime day;
   double targetLow = 70;
+  double targetLower = 55;
   double targetHigh = 180;
+  double targetHigher = 250;
   ProfileEntryData sens;
   ProfileEntryData carbRatio;
   ProfileEntryData basal;
@@ -1849,11 +1851,15 @@ class DayData {
   Date date;
   ProfileGlucData basalData;
   int lowCount = 0;
+  int lowerCount = 0;
   int normCount = 0;
   int highCount = 0;
+  int higherCount = 0;
   int stdLowCount = 0;
+  int stdLowerCount = 0;
   int stdNormCount = 0;
   int stdHighCount = 0;
+  int stdHigherCount = 0;
   int entryCountValid = 0;
   int totalCount = 288;
   int entryCountInvalid = 0;
@@ -1898,6 +1904,12 @@ class DayData {
 
   double get varK => (mid ?? 0) != 0 ? stdAbw(true) / mid * 100 : 0;
 
+  double lowerPrz(Globals g) => entryCountValid == 0
+      ? 0
+      : (g.ppStandardLimits ? stdLowerCount : lowerCount) /
+          entryCountValid *
+          100;
+
   double lowPrz(Globals g) => entryCountValid == 0
       ? 0
       : (g.ppStandardLimits ? stdLowCount : lowCount) / entryCountValid * 100;
@@ -1909,6 +1921,12 @@ class DayData {
   double highPrz(Globals g) => entryCountValid == 0
       ? 0
       : (g.ppStandardLimits ? stdHighCount : highCount) / entryCountValid * 100;
+
+  double higherPrz(Globals g) => entryCountValid == 0
+      ? 0
+      : (g.ppStandardLimits ? stdHigherCount : higherCount) /
+          entryCountValid *
+          100;
 
   double get avgCarbs => carbCount > 0 ? carbs / carbCount : 0;
 
@@ -2159,9 +2177,11 @@ class DayData {
     normCount = 0;
     highCount = 0;
     lowCount = 0;
+    lowerCount = 0;
     stdNormCount = 0;
     stdHighCount = 0;
     stdLowCount = 0;
+    stdLowerCount = 0;
     carbCount = 0;
     carbs = 0;
     for (var entry in entries) {
@@ -2169,16 +2189,28 @@ class DayData {
         entryCountValid++;
         if (entry.gluc < basalData.targetLow) {
           lowCount++;
+          if (entry.gluc < basalData.targetLower) {
+            lowerCount++;
+          }
         } else if (entry.gluc > basalData.targetHigh) {
           highCount++;
+          if (entry.gluc > basalData.targetHigher) {
+            higherCount++;
+          }
         } else {
           normCount++;
         }
 
         if (entry.gluc < Globals.stdLow) {
           stdLowCount++;
+          if (entry.gluc < Globals.stdLower) {
+            stdLowerCount++;
+          }
         } else if (entry.gluc > Globals.stdHigh) {
           stdHighCount++;
+          if (entry.gluc > Globals.stdHigher) {
+            stdHigherCount++;
+          }
         } else {
           stdNormCount++;
         }

@@ -1162,8 +1162,10 @@ class Globals extends Settings {
 
   bool get isKHBE => _khFactor == 12;
 
+  static final int stdLower = 55;
   static final int stdLow = 70;
   static final int stdHigh = 180;
+  static final int stdHigher = 250;
 
   dynamic getGlucInfo() {
     var ret = {'step': 1, 'unit': Settings.msgUnitMGDL};
