@@ -1098,7 +1098,7 @@ class ActivityData extends JsonData {
     var ret = ActivityData()
       ..id = id
       ..createdAt = createdAt.add(Duration(minutes: 0))
-      ..type = type
+      ..type = 'steps-total'
       ..steps = steps
       ..bpm = bpm
       ..accuracy = accuracy
